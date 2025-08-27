@@ -1,3 +1,7 @@
+Data Parallelism and Gradient Synchronization: The AllReduce Gospel
+
+Part 3 of "Distributed Training from Scratch"
+
 So far we've chopped up attention heads like distributed sushi chefs and built assembly lines of transformer layers that would make Henry Ford jealous. Now it's time for the most democratic form of parallelism: data parallelism, where every GPU gets its own complete copy of the model and works on different slices of data. It's like having a team of identical workers each handling different customers, then meeting at the end of the day to compare notes and sync up their knowledge. 
 
 This is the form of parallelism that feels most natural to human intuition. Obviously you'd want multiple workers doing the same job on different data. Obviously they should share what they've learned. Obviously this should scale linearly with the number of workers. And yet, like most things in distributed systems, the devil lives in the synchronization details, and that devil has a particular penchant for gradient aggregation algorithms and communication topology optimization.
